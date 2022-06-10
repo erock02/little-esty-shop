@@ -1,11 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe Repository do
+RSpec.describe Holiday do
   it "exists and has attributes" do
-    data = { name: 'Fake Repo' }
-    repo = Repository.new(data)
+    data = { localname: 'Fake Holiday' }
+    holiday = Holiday.new(data)
 
-    expect(repo).to be_an_instance_of(Repository)
-    expect(repo.name).to eq(data[:name])
+    expect(holiday).to be_an_instance_of(Holiday)
+  end
+
+  it "can get holidays" do
+    data = [{"localName":"Juneteenth"},{"localName":"Independence Day"}]
+    holiday = Holiday.new(data)
+
+    expect(holiday.get_holidays).to eq(["Juneteenth","Independence Day"])
   end
 end

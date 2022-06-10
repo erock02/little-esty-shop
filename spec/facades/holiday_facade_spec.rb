@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe RepositoryFacade do
+RSpec.describe HolidayFacade do
   describe 'create repository poros' do
     it "creates objects from the repository", :vcr do
-      repo = RepositoryFacade.create_repository
+      holiday = HolidayFacade.create_holidays
 
-      expect(repo).to be_an_instance_of(Repository)
+      expect(holiday).to be_an_instance_of(Holiday)
     end
   end
 
