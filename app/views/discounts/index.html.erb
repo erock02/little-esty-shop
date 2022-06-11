@@ -1,0 +1,8 @@
+<h1>Merchant Discounts Index</h1>
+<h2><%= @merchant.name %>'s Discounts</h2>
+
+<div class="discount_index">
+  <% @discounts.each do |discount| %>
+  <li> <%="Buy #{discount.threshold} items, get #{discount.discount}% off" %></li>
+  <% end %>
+</div>
