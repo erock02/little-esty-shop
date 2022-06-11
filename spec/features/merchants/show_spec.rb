@@ -129,7 +129,7 @@ RSpec.describe 'merchant dashboard show' do
 
 it "has links to bulk discounts", :vcr do
   visit "/merchants/#{merchant1.id}/dashboard"
-  click_link("Discounts")
+  click_link("Discounts Index")
   expect(current_path).to eq("/merchants/#{merchant1.id}/discounts")
 end
 
