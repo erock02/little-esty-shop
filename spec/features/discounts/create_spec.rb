@@ -8,9 +8,9 @@ RSpec.describe 'discounts create page', :vcr do
 
     click_link("Create New Discount")
 
-    expect(current_path).to eq(new_merchant_discount_path)
-    fill_in 'discount[discount]', with: "40"
-    fill_in 'discount[threshold]', with: "30"
+    expect(current_path).to eq(new_merchant_discount_path(merchant1))
+    fill_in 'discount', with: "40"
+    fill_in 'threshold', with: "30"
     click_button
     expect(current_path).to eq("/merchants/#{merchant1.id}/discounts")
     expect(page).to have_content("Buy 30 items, get 40% off")
