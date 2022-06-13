@@ -1,0 +1,9 @@
+<h2>Create A New Discount for <%= @merchant.name %></h2>
+<%= form_with url: merchant_discounts_path(@merchant), method: :post, local: true do |f| %>
+<%= f.label :discount, 'Discount Percent' %>
+<%= f.text_field :discount %> <br><br>
+<%= f.label :threshold, 'Quantity threshold' %>
+<%= f.text_field :threshold %> <br><br>
+<%= f.hidden_field :merchant_id, value: @merchant.id %>
+<%= f.submit 'Submit' %>
+<% end %>
