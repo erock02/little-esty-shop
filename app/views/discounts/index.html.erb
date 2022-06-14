@@ -5,5 +5,6 @@
 <div class="discount_index">
   <% @discounts.each do |discount| %>
   <li> <%="Buy #{discount.threshold} items, get #{discount.discount}% off" %></li>
+  <%= link_to "Delete #{discount.threshold} items, #{discount.discount}%  Discount", merchant_discount_path(@merchant, discount.id), method: :delete %>
   <% end %>
 </div>
