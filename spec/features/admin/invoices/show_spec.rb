@@ -71,4 +71,13 @@ RSpec.describe "Admin Invoice Show Page" do
 
     expect(current_path).to eq(admin_invoice_path(invoice1))
   end
+
+  it "displays the discount that was applied", :vcr do
+    merchant1.discounts.create!(discount: 25, threshold: 8)
+    visit admin_invoice_path(invoice1)
+
+    expect(page).to have_content("Total Discounted Revenue: $225,612.00")
+
+  end
+
 end
