@@ -74,6 +74,11 @@ RSpec.describe Invoice do
     it "#total_revenue" do
       expect(invoice1.total_revenue).to eq(68175)
     end
+
+    it "#total_discounted_revenue" do
+      merchant1.discounts.create!(discount: 30, threshold: 5)
+      expect(invoice1.total_discounted_revenue).to eq(47723)
+    end
   end
 
 

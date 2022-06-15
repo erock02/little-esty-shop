@@ -137,4 +137,11 @@ RSpec.describe "Merchant Invoices Show Page" do
 
     expect(current_path).to eq(merchant_invoice_path(merchant1, invoice1))
   end
+
+  it "displays the total discounts of items sold on the invoice", :vcr do
+    merchant1.discounts.create!(discount: 50, threshold: 8)
+    visit merchant_invoice_path(merchant1, invoice1)
+    save_and_open_page
+    expect(page).to have_content("Total Discounted Revenue: $173,133.00")
+  end
 end
