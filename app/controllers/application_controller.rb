@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
   end
 
   def holidays_info
-    @holidays = HolidayFacade.create_holidays_or_error
+    @data = HolidayFacade.create_holidays_or_error
+    @holidays = Holiday.new(@data)
   end
 
 end
