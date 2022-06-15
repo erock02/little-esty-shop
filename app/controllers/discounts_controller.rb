@@ -18,13 +18,20 @@ class DiscountsController < ApplicationController
   end
 
   def create
-    @merchant.discounts.create!(discount_params)
-    redirect_to merchant_discounts_path(@merchant)
+
+    if 0 < params[:discount].to_i && params[:discount].to_i < 100 && 0 < params[:threshold].to_i && params[:threshold].to_i < 100
+      @merchant.discounts.create!(discount_params)
+      redirect_to merchant_discounts_path(@merchant)
+    else
+      flash[:message] = 'Please enter a valid number between 0 and 100 for discount and quantity'
+      redirect_to new_merchant_discount_path(@merchant)
+    end
   end
 
   def update
     @discount = Discount.find(params[:id])
-    if 0 < params[:discount].to_i && params[:discount].to_i < 100
+    if 0 < params[:discount].to_i && params[:discount].to_i < 100 && 0 < params[:threshold].to_i && params[:threshold].to_i < 100
+      @merchant.discounts.create!(discount_params)
       @discount.update(discount_params)
       redirect_to merchant_discount_path(@merchant, @discount)
     else
